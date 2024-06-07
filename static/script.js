@@ -11,7 +11,10 @@ document.getElementById('myButton').addEventListener('click', function (event) {
         body: JSON.stringify({ word: word })  // Include the word in the request body
     })
         .then(response => response.json())
-        .then(wordinfo => {
+        .then(data => {
+            var word = data[1];
+            var wordinfo = data[0];
+
             var responseElement = document.getElementById('response');  // Clear the previous content
             responseElement.innerHTML = '';
 
@@ -26,16 +29,26 @@ document.getElementById('myButton').addEventListener('click', function (event) {
             table.style.marginTop = '20px';  // Add some space between the paragraph and the table
 
             var tbody = document.createElement('tbody');  // Add a body row
-
-            // Assuming wordinfo is an object with key-value pairs
-            Object.values(wordinfo).forEach(value => {
+            // Assuming word is an object with key-value pairs
+            // Assuming word is an object with key-value pairs
+            Object.entries(word).forEach(([key, value]) => {
                 var row = document.createElement('tr');
 
-                var td = document.createElement('td');
-                td.style.border = '1px solid #ddd';  // Lighter border color
-                td.style.padding = '8px';
-                td.appendChild(document.createTextNode(value));
-                row.appendChild(td);
+                var tdWord = document.createElement('td');
+                tdWord.style.border = '1px solid #ddd';  // Lighter border color
+                tdWord.style.padding = '8px';
+
+                var valueSpan = document.createElement('span');
+                valueSpan.style.color = 'blue';  // Change the text color to blue
+                valueSpan.appendChild(document.createTextNode(value + ' : '));
+                tdWord.appendChild(valueSpan);
+
+                var infoSpan = document.createElement('span');
+                infoSpan.style.color = 'black';  // Change the text color to black
+                infoSpan.appendChild(document.createTextNode(wordinfo[key]));
+                tdWord.appendChild(infoSpan);
+
+                row.appendChild(tdWord);
 
                 tbody.appendChild(row);
             });

@@ -20,7 +20,7 @@ def button_click():
     #print(wordinfo)
     words = getword(text44)#get the words that have the same sound as the input text
     #print(words)
-    return jsonify(wordinfo)
+    return jsonify(wordinfo, words)
     #return jsonify({'wordinfo': wordinfo})
 
    # return render_template("index.html", text=wordinfo)
