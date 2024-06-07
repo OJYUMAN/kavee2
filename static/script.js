@@ -22,22 +22,17 @@ document.getElementById('myButton').addEventListener('click', function (event) {
             var table = document.createElement('table');  // Create a table element
             table.style.borderCollapse = 'collapse';
             table.style.width = '100%';
-            table.style.border = '1px solid black';  // Add border to table
+            table.style.border = '1px solid #ddd';  // Lighter border color
+            table.style.marginTop = '20px';  // Add some space between the paragraph and the table
 
             var tbody = document.createElement('tbody');  // Add a body row
 
             // Assuming wordinfo is an object with key-value pairs
-            Object.entries(wordinfo).forEach(([key, value]) => {
+            Object.values(wordinfo).forEach(value => {
                 var row = document.createElement('tr');
 
-                var th = document.createElement('th');
-                th.style.border = '1px solid black';
-                th.style.padding = '8px';
-                th.appendChild(document.createTextNode(key));
-                row.appendChild(th);
-
                 var td = document.createElement('td');
-                td.style.border = '1px solid black';
+                td.style.border = '1px solid #ddd';  // Lighter border color
                 td.style.padding = '8px';
                 td.appendChild(document.createTextNode(value));
                 row.appendChild(td);

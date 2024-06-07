@@ -34,14 +34,41 @@ def matchingsound(text):
     print(index)
     print(len(index))
 
+
     wordsinfo = []
      # Get the information of the words
     for i in index:
-        worddara = list(dic.keys())[i] + dic[list(dic.keys())[i]]
+        worddara = dic[list(dic.keys())[i]]
         wordsinfo.append(worddara)
+
+    
         
     print(wordsinfo)
     return wordsinfo
+
+
+def getword(text):
+    with open('dictionarycombined.json', 'r') as f:# Load the JSON file
+        dic = json.load(f)
+    
+    phonetic_form = rhyme(text)#change the input text to phonetic form
+    print(phonetic_form)
+
+    # to only use the last syllable of the word cutting all syllables before then keep it in "data"
+    data = cutdictionaryword(dic)
+    #print(len(data))
+
+    # Find words from datas that have the same sound as the input text then return the index of the words
+    index = findword(data, phonetic_form)
+    print(index)
+    print(len(index))
+
+    words = []
+    for i in index:
+        words.append(list(dic.keys())[i])
+
+    return words
+
 
 
     
