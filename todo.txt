@@ -1,0 +1,3 @@
+# Optimization: Implement a search enhancement to improve speed. Consider grouping words by rhyme for more efficient lookups.
+
+# Enhancement: Prioritize words by usage frequency. 
