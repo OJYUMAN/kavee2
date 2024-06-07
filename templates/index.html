@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>App</title>
@@ -28,10 +28,11 @@
         </div>
     </nav>
 
-    <div class="d-flex justify-content-center align-items-start vh-100 pt-5">
+    <div class="d-flex justify-content-center align-items-start vh-70 pt-5">
         <form class="col-md-6">
             <div class="container">
-                <h2 class="mb-3">ค้นหาคํา</h2>
+                <h2 class="mb-3">ค้นหาคําศัพท์</h2>
+                <p>ฐานข้อมูลคำศัพท์: พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2542</p>
                 <form id="myForm">
                     <div class="form-group">
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -42,11 +43,23 @@
 
                     <button type="submit" class="btn btn-primary">ค้นหาคําไวพจน์</button>
                 </form>
+
             </div>
         </form>
     </div>
+    <div id="response"></div>
 
 
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

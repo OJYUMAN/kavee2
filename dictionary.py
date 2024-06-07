@@ -29,12 +29,21 @@ def matchingsound(text):
     data = cutdictionaryword(dic)
     #print(len(data))
 
-    #datas = dicphonetic(data)# change "data" to phonetic form then keep it in "datas"
-    #print(len(datas))
+    # Find words from datas that have the same sound as the input text then return the index of the words
+    index = findword(data, phonetic_form)
+    print(index)
+    print(len(index))
 
-    newwords = findword(data, phonetic_form)# Find words from datas that have the same sound as the input text
-    print(newwords)
-    print(len(newwords))
+    wordsinfo = []
+     # Get the information of the words
+    for i in index:
+        worddara = list(dic.keys())[i] + dic[list(dic.keys())[i]]
+        wordsinfo.append(worddara)
+        
+    print(wordsinfo)
+    return wordsinfo
+
+
     
 
 
@@ -54,26 +63,32 @@ def cutdictionaryword(data0):
 
 
 
-def dicphonetic(data):
-    # change "data" to phonetic form then keep it in "datas"
-    datas = []
-    for x in data:
-        y = rhyme(x)
-        datas.append(y)
+# def dicphonetic(data):
+#     # change "data" to phonetic form then keep it in "datas"
+#     datas = []
+#     for x in data:
+#         y = rhyme(x)
+#         datas.append(y)
 
-    return datas
+#     return datas
 
 
 
 def findword(datas, phonetic_form):
     newwords = []
+    index = []
     for x in datas:# Find words that have the same sound as the input text
         y = rhyme(x)
         if phonetic_form == y:
             newwords.append(x)
+            index.append(datas.index(x))
 
-    return newwords
+    return index
+
+
     
 
-
-
+def getwordinfo(index, dic):
+    # Get the information of the words
+    for i in index:
+        print(list(dic.keys())[i], dic[list(dic.keys())[i]])

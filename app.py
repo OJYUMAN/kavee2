@@ -7,18 +7,33 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', text=[])
 
 @app.route('/api/button_click', methods=['POST'])#หาคําคล้องจอง
 def button_click():
+    
     data = request.get_json()
     word = data['word']
     text2 = ssg.syllable_tokenize(word)#cut the word into syllables
     text44 = text2[-1]#get the last syllable
-    #matchingword(text44)
-    matchingsound(text44)
+    wordinfo = matchingsound(text44)
     
-    return jsonify(message='Button was clicked!')
+
+    return jsonify(wordinfo)
+    #return jsonify({'wordinfo': wordinfo})
+
+   # return render_template("index.html", text=wordinfo)
+
+
+   # return jsonify(message='Button was clicked!')
+
+@app.route('/get_arrays', methods=['GET'])
+def get_arrays():
+    array1 = [1, 2, 3, 4, 5]
+    array2 = ['a', 'b', 'c', 'd', 'e']
+    return jsonify(array1=array1, array2=array2)
+
+
 
 @app.route('/page2')
 def next_page():
