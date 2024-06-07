@@ -7,7 +7,7 @@ from phonetic import *
 
 def matchingword(text):
     
-    with open('dictionarycombined.json', 'r') as f:# Load the JSON file
+    with open('cleaned.json', 'r') as f:# Load the JSON file
         data = json.load(f)
     
     # Find words that contain the input text
@@ -19,7 +19,7 @@ def matchingword(text):
 
 def matchingsound(text):
     
-    with open('dictionarycombined.json', 'r') as f:# Load the JSON file
+    with open('cleaned.json', 'r') as f:# Load the JSON file
         dic = json.load(f)
     
     phonetic_form = rhyme(text)#change the input text to phonetic form
@@ -48,7 +48,7 @@ def matchingsound(text):
 
 
 def getword(text):
-    with open('dictionarycombined.json', 'r') as f:# Load the JSON file
+    with open('cleaned.json', 'r') as f:# Load the JSON file
         dic = json.load(f)
     
     phonetic_form = rhyme(text)#change the input text to phonetic form
