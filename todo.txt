@@ -1,3 +1,7 @@
-# Optimization: Implement a search enhancement to improve speed. Consider grouping words by rhyme for more efficient lookups.
+1.Implement a search enhancement to improve speed. Consider grouping words by rhyme for more efficient lookups.
 
-# Enhancement: Prioritize words by usage frequency. 
+2.Sort words by usage frequency. 
+
+3.Fix double word bug
+
+4.Make it support mobile web
