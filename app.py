@@ -16,12 +16,15 @@ def button_click():
     word = data['word']
     text2 = ssg.syllable_tokenize(word)#cut the word into syllables
     text44 = text2[-1]#get the last syllable
-    wordinfo = matchingsound(text44)#get the information of the words
-    #print(wordinfo)
-    words = getword(text44)#get the words that have the same sound as the input text
-    #print(words)
-    return jsonify(wordinfo, words)
-    #return jsonify({'wordinfo': wordinfo})
+    print(text44)
+    wordinfo = matchingsound(text44) # get the information of the words returned as the list of pairs
+    print(wordinfo)
+    definitions = [x[0] for x in wordinfo] # loop through the list of pairs
+    words = [x[1] for x in wordinfo]
+    # words = getword(text44)#get the words that have the same sound as the input text
+    # print(words)
+    return jsonify(definitions, words) #, words
+    # return jsonify({'wordinfo': wordinfo})
 
    # return render_template("index.html", text=wordinfo)
 

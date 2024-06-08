@@ -19,7 +19,7 @@ document.getElementById('myButton').addEventListener('click', function (event) {
             responseElement.innerHTML = '';
 
             var lengthPara = document.createElement('p');  // Create a paragraph element
-            lengthPara.textContent = 'พบคําคล้องจองทั้งหมด' + Object.keys(wordinfo).length + 'คํา';  // Set the text to the length of wordinfo
+            lengthPara.textContent = 'พบคําคล้องจองทั้งหมด ' + Object.keys(wordinfo).length + ' คํา';  // Set the text to the length of wordinfo
             responseElement.appendChild(lengthPara);  // Add the paragraph to the response element
 
             var table = document.createElement('table');  // Create a table element
