@@ -9,13 +9,45 @@ def matchingword(text):
     
     with open('cleaned.json', 'r', encoding="utf8") as f: # Load the JSON file
         data = json.load(f)
+
+    # check if the word exists in the JSON data
+    matching_words = [word for word in data if word == text]
+
+    thai_numbers = {1: '๑', 2: '๒', 3: '๓', 4: '๔', 5: '๕'}
+
+    if(len(matching_words) == 0):#if the word does not exist in the JSON data
+        for i in range(1, 6):#loop for adding thai numbers to the input text
+
+            #add thai numbers to the input text and keep it in newword
+            newword = text + ' ' + thai_numbers[i]
+
+            #check if the new word exists in the JSON data and keep it in matchw
+            matchw = [word for word in data if word == newword]
+            print(matchw)
+            if matchw != []:#if the new word exists in the JSON data
+                matching_words.extend(matchw)
+ 
+
+    print(matching_words)
+
+
+
+   
     
     # Find words that contain the input text
-    matching_words = [word for word in data if text in word and word != text]
+    #matching_words = [word for word in data if text in word and word != text]
+    
+
+    datas = []
 
     for word in matching_words: # Print the matching words
-        print(word, data[word])
+        datas.append([word, data[word]])
+       # print(word, data[word])
+    
+    return datas
 
+def find_exact_match(dictionary, text):
+    return [word for word in dictionary.keys() if word == text]
 
 def matchingsound(text):
     
@@ -23,7 +55,7 @@ def matchingsound(text):
         dic = json.load(f)
     
     phonetic_form = rhyme(text)#change the input text to phonetic form
-    print(phonetic_form)
+    #print(phonetic_form)
 
     # to only use the last syllable of the word cutting all syllables before then keep it in "data"
     # data = cutdictionaryword(dic)
@@ -41,8 +73,8 @@ def matchingsound(text):
         if x == phonetic_form:
             index.append(ind)
 
-    print(index)
-    print(len(index))
+   # print(index)
+   # print(len(index))
 
 
     wordsinfo = []

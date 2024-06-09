@@ -16,26 +16,34 @@ def button_click():
     word = data['word']
     text2 = ssg.syllable_tokenize(word)#cut the word into syllables
     text44 = text2[-1]#get the last syllable
-    print(text44)
+    #print(text44)
     wordinfo = matchingsound(text44) # get the information of the words returned as the list of pairs
-    print(wordinfo)
+    #print(wordinfo)
     definitions = [x[0] for x in wordinfo] # loop through the list of pairs
     words = [x[1] for x in wordinfo]
     # words = getword(text44)#get the words that have the same sound as the input text
-    # print(words)
+    
     return jsonify(definitions, words) #, words
-    # return jsonify({'wordinfo': wordinfo})
+   
 
-   # return render_template("index.html", text=wordinfo)
+@app.route('/api/button_click2', methods=['POST'])
+def button_click2():
+    data = request.get_json()
+    word = data['word']
+   # word2 = word.replace('๑', '').replace('๒', '').replace('๓', '').replace('๔', '')
+   # word2 = word2.replace(' ', '')
+    word2 = word + ' ๑'
 
+   
+   
+    wordinfo = matchingword(word) # get the information of the words returned as the list of pairs
+    
+    definitions = [x[0] for x in wordinfo] # loop through the list of pairs
+    words = [x[1] for x in wordinfo]
+   
+   
+    return jsonify(words, definitions) #, words #, words
 
-   # return jsonify(message='Button was clicked!')
-
-@app.route('/get_arrays', methods=['GET'])
-def get_arrays():
-    array1 = [1, 2, 3, 4, 5]
-    array2 = ['a', 'b', 'c', 'd', 'e']
-    return jsonify(array1=array1, array2=array2)
 
 
 
