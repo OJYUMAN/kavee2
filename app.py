@@ -30,11 +30,6 @@ def button_click():
 def button_click2():
     data = request.get_json()
     word = data['word']
-   # word2 = word.replace('๑', '').replace('๒', '').replace('๓', '').replace('๔', '')
-   # word2 = word2.replace(' ', '')
-    word2 = word + ' ๑'
-
-   
    
     wordinfo = matchingword(word) # get the information of the words returned as the list of pairs
     

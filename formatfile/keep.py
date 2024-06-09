@@ -27,7 +27,16 @@ def matchingword(text):
             if matchw != []:#if the new word exists in the JSON data
                 matching_words.extend(matchw)
  
+
     print(matching_words)
+
+
+
+   
+    
+    # Find words that contain the input text
+    #matching_words = [word for word in data if text in word and word != text]
+    
 
     datas = []
 
@@ -37,11 +46,8 @@ def matchingword(text):
     
     return datas
 
-
-
-
-
-
+def find_exact_match(dictionary, text):
+    return [word for word in dictionary.keys() if word == text]
 
 def matchingsound(text):
     
@@ -51,7 +57,14 @@ def matchingsound(text):
     phonetic_form = rhyme(text)#change the input text to phonetic form
     #print(phonetic_form)
 
-    with open('newconverter.json', 'r', encoding="utf8") as g: # Load the converter JSON file
+    # to only use the last syllable of the word cutting all syllables before then keep it in "data"
+    # data = cutdictionaryword(dic)
+    #print(len(data))
+
+    # Find words from datas that have the same sound as the input text then return the index of the words
+    # index = findword(data, phonetic_form)
+
+    with open('converter.json', 'r', encoding="utf8") as g: # Load the converter JSON file
         conv = json.load(g)
     all_of_the_phonetics = conv.values()
 
@@ -60,7 +73,8 @@ def matchingsound(text):
         if x == phonetic_form:
             index.append(ind)
 
-    print("index:",index)
+   # print(index)
+   # print(len(index))
 
 
     wordsinfo = []
@@ -75,8 +89,94 @@ def matchingsound(text):
     #print(wordsinfo)
     return wordsinfo
 
+"""
+def getword(text):
+    with open('cleaned.json', 'r', encoding="utf8") as f:# Load the JSON file
+        dic = json.load(f)
+
+    phonetic_form = rhyme(text)  # change the input text to phonetic form
+    print(phonetic_form)
+
+    # to only use the last syllable of the word cutting all syllables before then keep it in "data"
+    # data = cutdictionaryword(dic)
+    # print(len(data))
+
+    # Find words from datas that have the same sound as the input text then return the index of the words
+    # index = findword(data, phonetic_form)
+
+    with open('converter.json', 'r', encoding="utf8") as g:  # Load the converter JSON file
+        conv = json.load(g)
+    all_of_the_phonetics = conv.values()
+
+    index = []
+    for ind, x in enumerate(all_of_the_phonetics):
+        if x == phonetic_form:
+            index.append(ind)
+
+    print(index)
+    print(len(index))
+
+    words = []
+    for i in index:
+        words.append(list(dic.keys())[i])
+
+    return words
+
+
+
+    
+
+
+########
+
+def cutdictionaryword(data0):
+    # to only use the last syllable of the word cutting all syllables before
+    # ปฏิบัติ -> บัติ, ตำรวจ -> รวจ (ไม่ได้เช็คว่าถูกหมดไหม)
+    datas = []
+    for x in data0:
+        w = syllable_tokenize(x)
+        w = str(w[-1])
+        #print(w)
+        datas.append(w)
+    # then the last syllables are kept in "data"
+    # open("CutDict.txt", "w", encoding="utf8").write("\n".join(datas))
+    return datas
+
+
+
+# def dicphonetic(data):
+#     # change "data" to phonetic form then keep it in "datas"
+#     datas = []
+#     for x in data:
+#         y = rhyme(x)
+#         datas.append(y)
+
+#     return datas
+
+
+
+def findword(datas, phonetic_form):
+    newwords = []
+    index = []
+    # this loops through the list "datas" and find every entry that rhymes (returns as a list of index
+    # of the matched entry)
+    for index_of_word, x in enumerate(datas): # Find words that have the same sound as the input text
+        y = rhyme(x)
+        if phonetic_form == y:
+            newwords.append(x)
+            index.append(index_of_word)
+
+    return index
+"""
 
 """
+
+def getwordinfo(index, dic):
+    # Get the information of the words
+    for i in index:
+        print(list(dic.keys())[i], dic[list(dic.keys())[i]])
+"""
+
 if __name__ ==  "__main__":
     # Generate a new json file with words as the key and the phonetic of the last syllable as the value
     # This is used to skip findword(), cutdictionaryword() entirely, improving the performance
@@ -102,4 +202,4 @@ if __name__ ==  "__main__":
     print(the_actual_dict)
 
     with open('converter.json', 'w', encoding="utf8") as g:
-        json.dump(the_actual_dict, g, ensure_ascii=False, indent=4)"""
+        json.dump(the_actual_dict, g, ensure_ascii=False, indent=4)

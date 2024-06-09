@@ -1,0 +1,29 @@
+Changelog - June 24, 2025
+
+1. Added a new file, named "newconverter.json"
+   Thai numerals and hyphen are removed before generating the phonetic.
+   ๑, ๒, ๓, ๆ, -
+   
+    "ก": "",
+    "ก็ ๑": "s",
+    "ก็ ๒": "s",
+    "ก กา": "c",
+    "ก ข": "1",
+    "ก ข ไม่กระดิกหู": "i",
+    "ก หัน": "3b",
+    "กก ๑": "1",
+    "กก ๒": "1",
+    "กก ๓": "1",
+    "กก ๔": "1",
+    "กก ๕": "1",
+    "กก ๖": "1",
+    "กก ๗": "1",
+    "ก๊ก": "1",
+    "กกขนาก": "1c",
+    "กกช้าง": "gc",
+  
+
+
+2. New Feature: Definition Search
+   - Added a new feature to search for definitions using `matchingword(text)`.
+   - Example: Searching for "ผม" will return "ผม ๑", "ผม ๒".
