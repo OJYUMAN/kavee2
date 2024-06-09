@@ -1,4 +1,4 @@
-Changelog - June 24, 2025
+Changelog - June 9, 2024
 
 1. Added a new file, named "newconverter.json"
    Thai numerals and hyphen are removed before generating the phonetic.
